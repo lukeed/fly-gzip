@@ -8,18 +8,14 @@
   "files": [
     "index.js"
   ],
-  "keywords":[
+  "keywords": [
     "fly",
     "fly-plugin",
     "gzip"
   ],
   "scripts": {
-    "lint": "eslint *.js",
-    "setup": "npm i && npm test",
-    "spec": "npm run test | tspec",
-    "test": "npm run lint && npm run tape",
+    "test": "npm run tape",
     "build": "echo No build task specified.",
-    "deploy": "npm run test && git push origin master && npm publish",
     "tape": "node --harmony --harmony_arrow_functions ./node_modules/tape/bin/tape test/*.js"
   },
   "author": {
@@ -28,6 +24,7 @@
     "url": "https://lukeed.com"
   },
   "dependencies": {
+    "object-assign": "^4.0.1"
   },
   "devDependencies": {
     "eslint": "^1.10.0",

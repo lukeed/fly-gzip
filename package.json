@@ -14,7 +14,7 @@
     "gzip"
   ],
   "scripts": {
-    "test": "npm run tape",
+    "test": "npm run tape | tspec",
     "build": "echo No build task specified.",
     "tape": "node --harmony --harmony_arrow_functions ./node_modules/tape/bin/tape test/*.js"
   },
@@ -27,7 +27,6 @@
     "object-assign": "^4.0.1"
   },
   "devDependencies": {
-    "eslint": "^1.10.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.2.2"
   },

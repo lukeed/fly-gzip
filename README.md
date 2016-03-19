@@ -10,7 +10,6 @@
 [![npm package][npm-ver-link]][releases]
 [![][dl-badge]][npm-pkg-link]
 [![][travis-badge]][travis-link]
-[![][mit-badge]][mit]
 
 ## Usage
 > Check out the [documentation](PLUGIN_DOCUMENTATION) to see the available options.
@@ -31,16 +30,12 @@ export default function* () {
 
 ## License
 
-[MIT][mit] © [luke][author] et [al][contributors]
+MIT © [Luke Edwards](https://lukeed.com)
 
-
-[mit]:          http://opensource.org/licenses/MIT
-[author]:       https://lukeed.com
 [contributors]: https://github.com/lukeed/fly-gzip/graphs/contributors
 [releases]:     https://github.com/lukeed/fly-gzip/releases
 [fly]:          https://www.github.com/flyjs/fly
 [fly-badge]:    https://img.shields.io/badge/fly-JS-05B3E1.svg?style=flat-square
-[mit-badge]:    https://img.shields.io/badge/license-MIT-444444.svg?style=flat-square
 [npm-pkg-link]: https://www.npmjs.org/package/fly-gzip
 [npm-ver-link]: https://img.shields.io/npm/v/fly-gzip.svg?style=flat-square
 [dl-badge]:     http://img.shields.io/npm/dm/fly-gzip.svg?style=flat-square

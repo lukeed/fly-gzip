@@ -1,34 +1,17 @@
-module.exports = function (/*debug*/) {
-  this.filter("gzip", (data, options) => {
-  /**
-    @overview A filter plugin returns an object { code, map, ext }
-    which is the result of transforming the incomding data source:
+var zlib = require('zlib');
+var assign = require('object-assign');
 
-      return { code, map, ext }
+module.exports = function () {
+  var self = this;
 
-    @example Sync filter `j` that transforms a given string into an
-    object, i.e, {code, map} where code is the result data and map
-    a sourcemap if `options.sourceMap === true`.
+  self.filter('gzip', function (data, options) {
+    options = assign({}, defaults, options || {});
+    return self.defer(compile.bind(self))(source, options);
+  });
+};
 
-      const j = require("my-js-transformer")
-      const assign = require("object-assign")
+function compile(src, opts, cb) {
+  var self = this;
 
-      module.exports = function () {
-        return this.filter("j", (data, options) => {
-          return assign({ ext: ".js"}, j.render(data.toString(), options))
-        })
-      }
-
-    @example Async filter `s` that transforms a given string and invokes
-    a callback function with an object, i.e, {css, map}.
-
-    const s = require("my-style-trasformer")
-    const assign = require("object-assign")
-
-    module.exports = function () {
-      return this.defer(s.render)(data.toString(), options).then((result) =>
-        assign({ ext: ".css"}, result))
-    }
-  */
-  })
+  console.log(src);
 }

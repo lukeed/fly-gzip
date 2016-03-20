@@ -14,9 +14,8 @@
     "gzip"
   ],
   "scripts": {
-    "test": "npm run tape | tspec",
-    "build": "echo No build task specified.",
-    "tape": "node --harmony --harmony_arrow_functions ./node_modules/tape/bin/tape test/*.js"
+    "test": "tape test/*.js | tspec",
+    "build": "echo No build task specified."
   },
   "author": {
     "name": "Luke Edwards",

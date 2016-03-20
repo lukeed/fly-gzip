@@ -65,7 +65,7 @@ MIT © [Luke Edwards](https://lukeed.com)
 
 [contributors]: https://github.com/lukeed/fly-gzip/graphs/contributors
 [releases]:     https://github.com/lukeed/fly-gzip/releases
-[fly]:          https://www.github.com/flyjs/fly
+[fly]:          https://www.github.com/flyjs/fly 
 [fly-badge]:    https://img.shields.io/badge/fly-JS-05B3E1.svg?style=flat-square
 [npm-pkg-link]: https://www.npmjs.org/package/fly-gzip
 [npm-ver-link]: https://img.shields.io/npm/v/fly-gzip.svg?style=flat-square

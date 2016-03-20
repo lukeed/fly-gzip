@@ -26,7 +26,8 @@ function compile(buf, config, cb) {
 
 	// if there is a threshold & we don't exceed it
 	if (config.threshold && typeof config.threshold == 'number') {
-		if (buf.byteLength < config.threshold) {
+
+		if (Buffer.byteLength(buf) < config.threshold) {
 			return cb(null, {code: buf, ext: ext});
 		}
 	}

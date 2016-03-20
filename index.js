@@ -1,17 +1,39 @@
-var zlib = require('zlib');
+var gzip = require('zlib').gzip;
+var extname = require('path').extname;
 var assign = require('object-assign');
+
+var defaults = {
+  extension: '.gz',
+  options: {}
+};
 
 module.exports = function () {
   var self = this;
 
-  self.filter('gzip', function (data, options) {
-    options = assign({}, defaults, options || {});
-    return self.defer(compile.bind(self))(source, options);
+  return self.filter('gzip', function (data, config) {
+    config = assign({}, defaults, config || {});
+    return self.defer(compile.bind(self))(data, config);
   });
 };
 
-function compile(src, opts, cb) {
+function compile(buf, config, cb) {
   var self = this;
 
-  console.log(src);
+  var ext = extname(config.filename);
+  // modify the file extension, if set
+  var cext = config.extension;
+  if (cext && typeof cext == 'string') {
+    ext += cext;
+  }
+
+  return gzip(buf, config.options, function (err, res) {
+    if (err) {
+      return self.emit('plugin_error', {
+        plugin: 'fly-gzip',
+        error: err.message
+      });
+    }
+
+    cb(null, {code: res, ext: ext});
+  });
 }

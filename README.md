@@ -1,10 +1,10 @@
 <div align="center">
-  <a href="http://github.com/flyjs/fly">
-    <img width=200px  src="https://cloud.githubusercontent.com/assets/8317250/8733685/0be81080-2c40-11e5-98d2-c634f076ccd7.png">
-  </a>
+	<a href="http://github.com/flyjs/fly">
+		<img width=200px  src="https://cloud.githubusercontent.com/assets/8317250/8733685/0be81080-2c40-11e5-98d2-c634f076ccd7.png">
+	</a>
 </div>
 
-> [Gzip](https://github.com/lukeed/fly-gzip) plugin for _[Fly][fly]_.
+> Gzip plugin for Fly.
 
 [![][fly-badge]][fly]
 [![npm package][npm-ver-link]][releases]
@@ -14,19 +14,50 @@
 ## Usage
 > Check out the [documentation](PLUGIN_DOCUMENTATION) to see the available options.
 
-### Install
+## Install
 
 ```a
 npm install -D fly-gzip
 ```
 
-### Example
+## Usage
 
 ```js
-export default function* () {
-  yield ...
+exports.gzip = function * () {
+	yield this.source('dist/**/*.*')
+		.gzip({
+			extension: '.gzip',
+			threshold: 1024,
+			options: {
+				level: 9
+			}
+		})
+		.target('dist');
 }
 ```
+
+## API
+
+#### extension
+
+Type: `string` or `false`<br>
+Default: `.gz`
+
+The extension, if any, to append to the filename.
+
+#### threshold
+
+Type: `integer` or `false`<br>
+Default: `false`
+
+The minimum size, in bytes, required to gzipped.
+
+#### options
+
+Type: `object`<br>
+Default: `{}`
+
+The `zlib` options to pass in. See [zlib's documentation](https://nodejs.org/api/zlib.html#zlib_class_options) for more.
 
 ## License
 

@@ -21,15 +21,15 @@ test('fly-gzip', function (t) {
 
 			t.equal(name, 'gzip', 'add the fly-gzip filter');
 
-			fn(input).then(function (buf) {
+			fn(input, {file: {}}).then(function (buf) {
 				t.equal(buf.ext, '.gz', 'add gz extension by default');
 			});
 
-			fn(input, {extension: '.gzip'}).then(function (buf) {
+			fn(input, {file: {}, extension: '.gzip'}).then(function (buf) {
 				t.equal(buf.ext, '.gzip', 'add custom gzip extension');
 			});
 
-			fn(input, {threshold: 5000}).then(function (buf) {
+			fn(input, {file: {}, threshold: 5000}).then(function (buf) {
 				t.equal(buf.ext, '', 'will not process if below threshold');
 			});
 		}

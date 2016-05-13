@@ -1,6 +1,5 @@
 var gzip = require('zlib').gzip;
 var stats = require('fs').statSync;
-var extname = require('path').extname;
 var assign = require('object-assign');
 
 var defaults = {
@@ -21,8 +20,7 @@ module.exports = function () {
 
 function compile(buf, config, cb) {
 	var self = this;
-	// read the file's extension early
-	var ext = extname(config.filename);
+	var ext = config.file.ext; // eg: '.js'
 
 	// if there is a threshold & we don't exceed it
 	if (config.threshold && typeof config.threshold == 'number') {

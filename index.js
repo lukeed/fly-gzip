@@ -20,7 +20,7 @@ module.exports = function () {
 
 function compile(buf, config, cb) {
 	var self = this;
-	var ext = config.file.ext; // eg: '.js'
+	var ext = config.file.ext || ''; // eg: '.js'
 
 	// if there is a threshold & we don't exceed it
 	if (config.threshold && typeof config.threshold == 'number') {

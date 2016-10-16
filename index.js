@@ -27,5 +27,8 @@ module.exports = function () {
 
 		// compress & set data
 		clone.data = gzip(clone.data, opts.options);
+
+		// add to files array
+		this._.files.push(clone);
 	});
 };

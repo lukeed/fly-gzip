@@ -1,74 +1,79 @@
-<div align="center">
-	<a href="http://github.com/flyjs/fly">
-		<img width=200px  src="https://cloud.githubusercontent.com/assets/8317250/8733685/0be81080-2c40-11e5-98d2-c634f076ccd7.png">
-	</a>
-</div>
+# fly-gzip [![][travis-badge]][travis-link] [![npm package][npm-ver-link]][releases]
 
 > Gzip plugin for Fly.
 
-[![][fly-badge]][fly]
-[![npm package][npm-ver-link]][releases]
-[![][dl-badge]][npm-pkg-link]
-[![][travis-badge]][travis-link]
-
-## Usage
-> Check out the [documentation](PLUGIN_DOCUMENTATION) to see the available options.
+<!-- <div align="center">
+	<a href="http://github.com/flyjs/fly">
+		<img width=200px  src="https://cloud.githubusercontent.com/assets/8317250/8733685/0be81080-2c40-11e5-98d2-c634f076ccd7.png">
+	</a>
+</div> -->
 
 ## Install
 
-```a
-npm install -D fly-gzip
+```
+npm install --save-dev fly-gzip
 ```
 
 ## Usage
 
 ```js
 exports.gzip = function * () {
-	yield this.source('dist/**/*.*')
-		.gzip({
-			extension: '.gzip',
-			threshold: 1024,
-			options: {
-				level: 9
-			}
-		})
-		.target('dist');
+  yield this.source('dist/**/*.*')
+    .gzip({
+      threshold: 1024,
+      ext: 'gzip',
+      options: {
+        level: 9
+      }
+    })
+    .target('dist');
 }
 ```
 
 ## API
 
-#### extension
+### .gzip(options)
 
-Type: `string` or `false`<br>
-Default: `.gz`
+Any files passed through `.gzip()` will not be affect directly. Instead, a _cloned_ copy will be compressed & have its extension modified. This means your `target` directory will contain the orginal file **and** its gzipped copy.
 
-The extension, if any, to append to the filename.
+```
+\src
+  |- bundle.js
+\dist
+  |- bundle.js
+  |- bundle.js.gz
+```
+
+#### ext
+
+Type: `string`<br>
+Default: `gz`
+
+The extension to append to the compressed file's type.
+
+```
+bundle.js ===> bundle.js.gz
+```
 
 #### threshold
 
-Type: `integer` or `false`<br>
+Type: `integer`<br>
 Default: `false`
 
-The minimum size, in bytes, required to gzipped.
+The minimum size, in bytes, required to be compressed. If a file does not satisfy this requirement, it will not be gzipped.
 
 #### options
 
 Type: `object`<br>
 Default: `{}`
 
-The `zlib` options to pass in. See [zlib's documentation](https://nodejs.org/api/zlib.html#zlib_class_options) for more.
+The [`zlib` options](https://nodejs.org/api/zlib.html#zlib_class_options) to pass in.
 
 ## License
 
 MIT © [Luke Edwards](https://lukeed.com)
 
-[contributors]: https://github.com/lukeed/fly-gzip/graphs/contributors
 [releases]:     https://github.com/lukeed/fly-gzip/releases
-[fly]:          https://www.github.com/flyjs/fly 
-[fly-badge]:    https://img.shields.io/badge/fly-JS-05B3E1.svg?style=flat-square
-[npm-pkg-link]: https://www.npmjs.org/package/fly-gzip
 [npm-ver-link]: https://img.shields.io/npm/v/fly-gzip.svg?style=flat-square
-[dl-badge]:     http://img.shields.io/npm/dm/fly-gzip.svg?style=flat-square
 [travis-link]:  https://travis-ci.org/lukeed/fly-gzip
 [travis-badge]: http://img.shields.io/travis/lukeed/fly-gzip.svg?style=flat-square

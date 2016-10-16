@@ -34,7 +34,7 @@ exports.gzip = function * () {
 
 ### .gzip(options)
 
-Any files passed through `.gzip()` will not be affect directly. Instead, a _cloned_ copy will be compressed & have its extension modified. This means your `target` directory will contain the orginal file **and** its gzipped copy.
+Any files passed through `.gzip()` will not be affected directly. Instead, a _cloned_ copy will be compressed & have its extension modified. This means your `target` directory will contain the orginal file **and** its gzipped copy.
 
 ```
 \src

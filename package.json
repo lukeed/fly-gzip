@@ -11,6 +11,8 @@
   "keywords": [
     "fly",
     "fly-plugin",
+    "compress",
+    "deflate",
     "gzip"
   ],
   "scripts": {
@@ -23,7 +25,8 @@
   },
   "devDependencies": {
     "tap-spec": "^4.1.1",
-    "tape": "^4.2.2"
+    "tape": "^4.2.2",
+    "fly": "beta"
   },
   "engines": {
     "node": ">= 4.6.0"

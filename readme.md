@@ -1,4 +1,4 @@
-# fly-gzip [![][travis-badge]][travis-link] [![npm package][npm-ver-link]][releases]
+# fly-gzip [![][travis-badge]][travis-link] [![npm package][npm-ver-link]](https://www.npmjs.com/package/fly-gzip)
 
 > Gzip plugin for Fly.
 
@@ -73,7 +73,6 @@ The [`zlib` options](https://nodejs.org/api/zlib.html#zlib_class_options) to pas
 
 MIT © [Luke Edwards](https://lukeed.com)
 
-[releases]:     https://github.com/lukeed/fly-gzip/releases
 [npm-ver-link]: https://img.shields.io/npm/v/fly-gzip.svg?style=flat-square
 [travis-link]:  https://travis-ci.org/lukeed/fly-gzip
 [travis-badge]: http://img.shields.io/travis/lukeed/fly-gzip.svg?style=flat-square

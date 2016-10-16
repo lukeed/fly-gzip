@@ -1,7 +1,6 @@
 'use strict';
 
-// @todo: promisify
-const gzip = require('zlib').gzipSync;
+const zlib = require('zlib');
 
 const defaults = {
 	threshold: false,
@@ -10,6 +9,8 @@ const defaults = {
 };
 
 module.exports = function () {
+	const gzip = this.$.promisify(zlib.gzip);
+
 	this.plugin('gzip', {}, function * (file, opts) {
 		opts = Object.assign({}, defaults, opts);
 
@@ -26,7 +27,7 @@ module.exports = function () {
 		clone.base += (opts.ext.charAt(0) === '.') ? opts.ext : `.${opts.ext}`;
 
 		// compress & set data
-		clone.data = gzip(clone.data, opts.options);
+		clone.data = yield gzip(clone.data, opts.options);
 
 		// add to files array
 		this._.files.push(clone);

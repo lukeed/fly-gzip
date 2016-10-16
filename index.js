@@ -1,5 +1,6 @@
 'use strict';
 
+// @todo: promisify
 const gzip = require('zlib').gzipSync;
 
 const defaults = {
@@ -18,6 +19,7 @@ module.exports = function () {
 		}
 
 		// clone the file object
+		// @todo: `opts.replace`
 		let clone = Object.assign({}, file);
 
 		// modify the file extension

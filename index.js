@@ -1,6 +1,6 @@
 'use strict';
 
-const zlib = require('zlib');
+const {gzip} = require('zlib');
 
 const defaults = {
 	threshold: false,
@@ -8,10 +8,9 @@ const defaults = {
 	ext: 'gz'
 };
 
-module.exports = function () {
-	const gzip = this.$.promisify(zlib.gzip);
-
-	this.plugin('gzip', {}, function * (file, opts) {
+module.exports = function (fly, utils) {
+	const zipper = utils.promisify(gzip);
+	fly.plugin('gzip', {}, function * (file, opts) {
 		opts = Object.assign({}, defaults, opts);
 
 		// if there is a threshold && we don't meet it, exit
@@ -27,7 +26,7 @@ module.exports = function () {
 		clone.base += (opts.ext.charAt(0) === '.') ? opts.ext : `.${opts.ext}`;
 
 		// compress & set data
-		clone.data = yield gzip(clone.data, opts.options);
+		clone.data = yield zipper(clone.data, opts.options);
 
 		// add to files array
 		this._.files.push(clone);

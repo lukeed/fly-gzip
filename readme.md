@@ -17,8 +17,8 @@ npm install --save-dev fly-gzip
 ## Usage
 
 ```js
-exports.gzip = function * () {
-  yield this.source('dist/**/*.*')
+exports.gzip = function * (fly) {
+  yield fly.source('dist/**/*.*')
     .gzip({
       threshold: 1024,
       ext: 'gzip',
